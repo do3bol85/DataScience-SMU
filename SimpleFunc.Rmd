@@ -1,0 +1,13 @@
+---
+title: "SimpleFunc"
+output:
+  html_document:
+    keep_md: true
+---
+
+# Example code for using RStudion with Git and GithHub
+```{r}
+se <- function(x) {
+  sd(x)/length(x)
+}
+```
