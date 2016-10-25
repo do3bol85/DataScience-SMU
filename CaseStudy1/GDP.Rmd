@@ -9,7 +9,7 @@ output:
   
 ---
 
-```{r setup, include=FALSE}
+```{r setup, include=TRUE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
@@ -83,19 +83,18 @@ There are 189 ID that match between both datasets
 
 #### 2- What is the 13th country in the resulting data frame?
 
-```{r results= "asis"}
+```{r results= "show"}
 X <- GDPandEDUCSorted[13,]
 knitr::kable(X,padding = 2,align = 'l')
 ```
 
 #### 3- What are the average GDP rankings for the "High income: OECD" and "High income:nonOECD" groups?
 
-```{r results = "asis"}
+```{r results = "show"}
 Y <- ddply(GDPandEDUCSorted[GDPandEDUCSorted$Income.Group == "High income: nonOECD" | GDPandEDUCSorted$Income.Group == "High income: OECD",],.(Income.Group),summarize, "Average Ranking"=mean(Ranking))
+knitr::kable(Y,padding = 2, align = 'l')
 ```
 
-Our average for the two groups could be summarized in these tables `r Y <- ddply(GDPandEDUCSorted[GDPandEDUCSorted$Income.Group == "High income: nonOECD" | GDPandEDUCSorted$Income.Group == "High income: OECD",],.(Income.Group),summarize, "Average Ranking"=mean(Ranking))
-knitr::kable(Y,padding = 2, align = 'l')`
 
 ### Analysis #4
 image:

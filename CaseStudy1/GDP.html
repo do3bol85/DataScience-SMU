@@ -152,6 +152,7 @@ $(document).ready(function () {
 </div>
 
 
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knitr::opts_chunk$<span class="kw">set</span>(<span class="dt">echo =</span> <span class="ot">TRUE</span>)</code></pre></div>
 <div id="gross-domestic-product-analysis" class="section level2 tabset tabset-fade tabset-pills">
 <h2>Gross Domestic Product Analysis</h2>
 <div id="introduction" class="section level3">
@@ -235,8 +236,9 @@ knitr::<span class="kw">kable</span>(X,<span class="dt">padding =</span> <span c
 </div>
 <div id="what-are-the-average-gdp-rankings-for-the-high-income-oecd-and-high-incomenonoecd-groups" class="section level4">
 <h4>3- What are the average GDP rankings for the “High income: OECD” and “High income:nonOECD” groups?</h4>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Y &lt;-<span class="st"> </span><span class="kw">ddply</span>(GDPandEDUCSorted[GDPandEDUCSorted$Income.Group ==<span class="st"> &quot;High income: nonOECD&quot;</span> |<span class="st"> </span>GDPandEDUCSorted$Income.Group ==<span class="st"> &quot;High income: OECD&quot;</span>,],.(Income.Group),summarize, <span class="st">&quot;Average Ranking&quot;</span>=<span class="kw">mean</span>(Ranking))</code></pre></div>
-<p>built with</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Y &lt;-<span class="st"> </span><span class="kw">ddply</span>(GDPandEDUCSorted[GDPandEDUCSorted$Income.Group ==<span class="st"> &quot;High income: nonOECD&quot;</span> |<span class="st"> </span>GDPandEDUCSorted$Income.Group ==<span class="st"> &quot;High income: OECD&quot;</span>,],.(Income.Group),summarize, <span class="st">&quot;Average Ranking&quot;</span>=<span class="kw">mean</span>(Ranking))
+Z &lt;-<span class="st"> </span>knitr::<span class="kw">kable</span>(Y,<span class="dt">padding =</span> <span class="dv">2</span>, <span class="dt">align =</span> <span class="st">'l'</span>)</code></pre></div>
+<p>the group averages are</p>
 <table>
 <thead>
 <tr class="header">
