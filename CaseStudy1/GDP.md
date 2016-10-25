@@ -94,17 +94,12 @@ There are 189 ID that match between both datasets
 ```r
 # Extracting the 13 row from the data to check the 13 country ranking
 X <- GDPandEDUCSorted[13,]
-X
+knitr::kable(X,padding = 2,align = 'l')
 ```
 
-```
-##    CountryCode        Income.Group Ranking         CounterName CountryGDP
-## 93         KNA Upper middle income     178 St. Kitts and Nevis        767
-```
-
-```r
-#knitr::kable(X,padding = 2,align = 'l')
-```
+      CountryCode    Income.Group           Ranking    CounterName            CountryGDP  
+----  -------------  ---------------------  ---------  ---------------------  ------------
+93    KNA            Upper middle income    178        St. Kitts and Nevis    767         
 
 The 13 Country in the dataset is St. Kitts and Nevis
 
@@ -114,18 +109,15 @@ The 13 Country in the dataset is St. Kitts and Nevis
 ```r
 # Showing two income groups and there average ranking. Using kable from knitr to show the table in nice form
 Y <- ddply(GDPandEDUCSorted[GDPandEDUCSorted$Income.Group == "High income: nonOECD" | GDPandEDUCSorted$Income.Group == "High income: OECD",],.(Income.Group),summarize, "Average Ranking"=mean(Ranking))
-Y
+knitr::kable(Y,padding = 2, align = 'l')
 ```
 
-```
-##           Income.Group Average Ranking
-## 1 High income: nonOECD        91.91304
-## 2    High income: OECD        32.96667
-```
 
-```r
-#knitr::kable(Y,padding = 2, align = 'l')
-```
+
+Income.Group            Average Ranking  
+----------------------  -----------------
+High income: nonOECD    91.91304         
+High income: OECD       32.96667         
 
 * Average Ranking for High Income nonOECD Countries:  91.91
 * Average Ranking for High Income OECD Countries:     32.96
@@ -169,26 +161,15 @@ Upper middle income     11              9              8             8          
 ```r
 # Create a table that shows the countries with Lower middle income but among the 38 nations with highest GDP
 Z <- GDPandEDUCSorted[which(GDPandEDUCSorted$Ranking <= 38 & GDPandEDUCSorted$Income.Group == "Lower middle income"),]
-Z
+knitr::kable(Z, padding = 2, align = 'l')
 ```
 
-```
-##     CountryCode        Income.Group Ranking      CounterName CountryGDP
-## 51          EGY Lower middle income      38 Egypt, Arab Rep.     262832
-## 165         THA Lower middle income      31         Thailand     365966
-## 77          IDN Lower middle income      16        Indonesia     878043
-## 78          IND Lower middle income      10            India    1841710
-## 34          CHN Lower middle income       2            China    8227103
-##           Quants
-## 51  (0.811,38.8]
-## 165 (0.811,38.8]
-## 77  (0.811,38.8]
-## 78  (0.811,38.8]
-## 34  (0.811,38.8]
-```
-
-```r
-#knitr::kable(Z, padding = 2, align = 'l')
-```
+       CountryCode    Income.Group           Ranking    CounterName         CountryGDP    Quants        
+-----  -------------  ---------------------  ---------  ------------------  ------------  --------------
+51     EGY            Lower middle income    38         Egypt, Arab Rep.    262832        (0.811,38.8]  
+165    THA            Lower middle income    31         Thailand            365966        (0.811,38.8]  
+77     IDN            Lower middle income    16         Indonesia           878043        (0.811,38.8]  
+78     IND            Lower middle income    10         India               1841710       (0.811,38.8]  
+34     CHN            Lower middle income    2          China               8227103       (0.811,38.8]  
 
 We found 5 countries that matches our criteria above
