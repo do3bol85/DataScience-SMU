@@ -94,12 +94,31 @@ There are 189 ID that match between both datasets
 ```r
 # Extracting the 13 row from the data to check the 13 country ranking
 X <- GDPandEDUCSorted[13,]
-knitr::kable(X,padding = 2,align = 'l')
+knitr::kable(X,padding = 2,align = 'l',format = "html")
 ```
 
-      CountryCode    Income.Group           Ranking    CounterName            CountryGDP  
-----  -------------  ---------------------  ---------  ---------------------  ------------
-93    KNA            Upper middle income    178        St. Kitts and Nevis    767         
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:left;"> CountryCode </th>
+   <th style="text-align:left;"> Income.Group </th>
+   <th style="text-align:left;"> Ranking </th>
+   <th style="text-align:left;"> CounterName </th>
+   <th style="text-align:left;"> CountryGDP </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> 93 </td>
+   <td style="text-align:left;"> KNA </td>
+   <td style="text-align:left;"> Upper middle income </td>
+   <td style="text-align:left;"> 178 </td>
+   <td style="text-align:left;"> St. Kitts and Nevis </td>
+   <td style="text-align:left;"> 767 </td>
+  </tr>
+</tbody>
+</table>
 
 The 13 Country in the dataset is St. Kitts and Nevis
 
@@ -109,15 +128,27 @@ The 13 Country in the dataset is St. Kitts and Nevis
 ```r
 # Showing two income groups and there average ranking. Using kable from knitr to show the table in nice form
 Y <- ddply(GDPandEDUCSorted[GDPandEDUCSorted$Income.Group == "High income: nonOECD" | GDPandEDUCSorted$Income.Group == "High income: OECD",],.(Income.Group),summarize, "Average Ranking"=mean(Ranking))
-knitr::kable(Y,padding = 2, align = 'l')
+knitr::kable(Y,padding = 2, align = 'l',format = "html")
 ```
 
-
-
-Income.Group            Average Ranking  
-----------------------  -----------------
-High income: nonOECD    91.91304         
-High income: OECD       32.96667         
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Income.Group </th>
+   <th style="text-align:left;"> Average Ranking </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> High income: nonOECD </td>
+   <td style="text-align:left;"> 91.91304 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> High income: OECD </td>
+   <td style="text-align:left;"> 32.96667 </td>
+  </tr>
+</tbody>
+</table>
 
 * Average Ranking for High Income nonOECD Countries:  91.91
 * Average Ranking for High Income OECD Countries:     32.96
@@ -161,20 +192,68 @@ Upper middle income     11              9              8             8          
 ```r
 # Create a table that shows the countries with Lower middle income but among the 38 nations with highest GDP
 Z <- GDPandEDUCSorted[which(GDPandEDUCSorted$Ranking <= 38 & GDPandEDUCSorted$Income.Group == "Lower middle income"),]
-print(xtable::xtable(Z),type="html")
+knitr::kable(Z, padding = 2, align = 'l',format = "html")
 ```
 
-```
-## <!-- html table generated in R 3.3.1 by xtable 1.8-2 package -->
-## <!-- Tue Oct 25 15:08:35 2016 -->
-## <table border=1>
-## <tr> <th>  </th> <th> CountryCode </th> <th> Income.Group </th> <th> Ranking </th> <th> CounterName </th> <th> CountryGDP </th> <th> Quants </th>  </tr>
-##   <tr> <td align="right"> 51 </td> <td> EGY </td> <td> Lower middle income </td> <td align="right"> 38.00 </td> <td> Egypt, Arab Rep. </td> <td align="right"> 262832.00 </td> <td> (0.811,38.8] </td> </tr>
-##   <tr> <td align="right"> 165 </td> <td> THA </td> <td> Lower middle income </td> <td align="right"> 31.00 </td> <td> Thailand </td> <td align="right"> 365966.00 </td> <td> (0.811,38.8] </td> </tr>
-##   <tr> <td align="right"> 77 </td> <td> IDN </td> <td> Lower middle income </td> <td align="right"> 16.00 </td> <td> Indonesia </td> <td align="right"> 878043.00 </td> <td> (0.811,38.8] </td> </tr>
-##   <tr> <td align="right"> 78 </td> <td> IND </td> <td> Lower middle income </td> <td align="right"> 10.00 </td> <td> India </td> <td align="right"> 1841710.00 </td> <td> (0.811,38.8] </td> </tr>
-##   <tr> <td align="right"> 34 </td> <td> CHN </td> <td> Lower middle income </td> <td align="right"> 2.00 </td> <td> China </td> <td align="right"> 8227103.00 </td> <td> (0.811,38.8] </td> </tr>
-##    </table>
-```
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:left;"> CountryCode </th>
+   <th style="text-align:left;"> Income.Group </th>
+   <th style="text-align:left;"> Ranking </th>
+   <th style="text-align:left;"> CounterName </th>
+   <th style="text-align:left;"> CountryGDP </th>
+   <th style="text-align:left;"> Quants </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> 51 </td>
+   <td style="text-align:left;"> EGY </td>
+   <td style="text-align:left;"> Lower middle income </td>
+   <td style="text-align:left;"> 38 </td>
+   <td style="text-align:left;"> Egypt, Arab Rep. </td>
+   <td style="text-align:left;"> 262832 </td>
+   <td style="text-align:left;"> (0.811,38.8] </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 165 </td>
+   <td style="text-align:left;"> THA </td>
+   <td style="text-align:left;"> Lower middle income </td>
+   <td style="text-align:left;"> 31 </td>
+   <td style="text-align:left;"> Thailand </td>
+   <td style="text-align:left;"> 365966 </td>
+   <td style="text-align:left;"> (0.811,38.8] </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 77 </td>
+   <td style="text-align:left;"> IDN </td>
+   <td style="text-align:left;"> Lower middle income </td>
+   <td style="text-align:left;"> 16 </td>
+   <td style="text-align:left;"> Indonesia </td>
+   <td style="text-align:left;"> 878043 </td>
+   <td style="text-align:left;"> (0.811,38.8] </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 78 </td>
+   <td style="text-align:left;"> IND </td>
+   <td style="text-align:left;"> Lower middle income </td>
+   <td style="text-align:left;"> 10 </td>
+   <td style="text-align:left;"> India </td>
+   <td style="text-align:left;"> 1841710 </td>
+   <td style="text-align:left;"> (0.811,38.8] </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 34 </td>
+   <td style="text-align:left;"> CHN </td>
+   <td style="text-align:left;"> Lower middle income </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> China </td>
+   <td style="text-align:left;"> 8227103 </td>
+   <td style="text-align:left;"> (0.811,38.8] </td>
+  </tr>
+</tbody>
+</table>
 
 We found 5 countries that matches our criteria above
