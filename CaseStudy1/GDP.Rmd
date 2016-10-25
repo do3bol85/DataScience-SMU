@@ -1,0 +1,98 @@
+---
+title: "GDP"
+author: "Rick Coleman"
+date: "10/25/2016"
+output:
+  html_document:
+    theme: united
+    highlight: tango
+  
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Gross Domestic Product Analysis {.tabset .tabset-fade .tabset-pills}
+
+### Introduction
+
+We would like to analyze Gross Domestic Product for all countries, we have two datasets,[Gross Domestic Product](http://data.worldbank.org/data-catalog/GDP-ranking-table) and [Educational](http://data.worldbank.org/data-catalog/ed-stats). To conduct our analysis, tidy data is required, therefore, we will conduct multiple steps to clean, merge and sort the data.
+Data was obtained from the [World Bank](http://www.worldbank.org) website
+
+### Libraries
+Loading all necessary libraries
+```{r}
+library(bitops)
+library(plyr)
+library(ggplot2)
+library(downloader)
+library(RCurl)
+library(repmis)
+library(xtable)
+```
+
+### Data Load
+
+**Download Files from the internet**
+
+```{r}
+GDPsite <- "https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FGDP.csv"
+EDUCsite <- "https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FEDSTATS_Country.csv"
+download.file(GDPsite,destfile = "Data/GDP.csv")
+download.file(EDUCsite,destfile = "Data/EDUC.csv")
+```
+
+**Read CSV files downloaded in the data folder**
+
+```{r}
+# Loading GDP Data and load only the lines that correspond with a ranked country
+# We are also changing the column labels and removing unwanted columns
+GDP <- read.csv ("Data/GDP.csv",sep = ",",header = FALSE, skip=5,nrows = 190,col.names = c("CountryCode","Ranking","Blank","Economy","CountryGDP","V6","V7","V8","V9","V10"))
+GDP[6:10] <- NULL
+GDP[3] <- NULL
+
+# Loading Education Data and Loading only fields required by our analysis
+Educ <- read.csv("Data/EDUC.csv",sep = ",",header = TRUE)
+Educ <- Educ[c(1,3)]
+```
+
+```{r}
+# Changing the format of our CountryGDP and Ranking to be able to sort them later
+GDP$CountryGDP <- as.numeric(gsub("[^[:digit:]]","", GDP$CountryGDP))
+GDP$Ranking <- as.numeric(gsub("[^[:digit:]]","", GDP$Ranking))
+```
+### Merge and Sort
+```{r}
+# Merging Data sets by short country code
+GDPandEDUC <- merge(Educ, GDP, by = "CountryCode")
+
+# Sorting data in Ascending order by dollars
+GDPandEDUCSorted <- GDPandEDUC[order(GDPandEDUC$CountryGDP, decreasing = FALSE),]
+```
+
+
+### Analysis #1 #2 #3
+
+#### 1- How many of the IDs match?
+```{r results = "asis"}
+print(paste0("ID's in both tables: ",length(intersect(GDP$CountryCode,Educ$CountryCode))))
+```
+
+#### 2- What is the 13th country in the resulting data frame?
+
+```{r results= "asis"}
+X <- GDPandEDUCSorted[13,]
+knitr::kable(X,padding = 2,align = 'l')
+```
+
+#### 3- What are the average GDP rankings for the "High income: OECD" and "High income:nonOECD" groups?
+
+```{r results = "asis"}
+Y <- ddply(GDPandEDUCSorted[GDPandEDUCSorted$Income.Group == "High income: nonOECD" | GDPandEDUCSorted$Income.Group == "High income: OECD",],.(Income.Group),summarize, Ranking=mean(Ranking))
+knitr::kable(Y,padding = 2, align = 'l')
+```
+
+### Analysis #4
+image:
+![Testing](Data/IncomeGroup.png)

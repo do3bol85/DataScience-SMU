@@ -1,0 +1,6 @@
+library(bitops)
+library(plyr)
+library(ggplot2)
+library(downloader)
+library(RCurl)
+library(repmis)
