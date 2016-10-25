@@ -157,7 +157,11 @@ $(document).ready(function () {
 <h2>Gross Domestic Product Analysis</h2>
 <div id="introduction" class="section level3">
 <h3>Introduction</h3>
-<p>We would like to analyze Gross Domestic Product for all countries, we have two datasets,<a href="http://data.worldbank.org/data-catalog/GDP-ranking-table">Gross Domestic Product</a> and <a href="http://data.worldbank.org/data-catalog/ed-stats">Educational</a>. To conduct our analysis, tidy data is required, therefore, we will conduct multiple steps to clean, merge and sort the data. Data was obtained from the <a href="http://www.worldbank.org">World Bank</a> website and includes list of countries and numerous features for every country. As for this analysis, we are only interested few features and we’ll eliminate the other ones to save space.</p>
+<p>We would like to analyze Gross Domestic Product for all countries, we have two datasets,<a href="http://data.worldbank.org/data-catalog/GDP-ranking-table">Gross Domestic Product</a> and <a href="http://data.worldbank.org/data-catalog/ed-stats">Educational</a>. To conduct our analysis, tidy data is required, therefore, we will conduct multiple steps to clean, merge and sort the data. Data was obtained from the <a href="http://www.worldbank.org">World Bank</a> website and includes list of countries and numerous features for every country. As for this analysis, we are only interested few features and we’ll eliminate the other ones to save space. All the work is split into multiple files by function and the files are</p>
+<p><code>Libraries.R</code> contains all libraries necessary for this analysis<br />
+<code>DataLoad.R</code> contains all the steps necessary to gather the data, load it and clean it<br />
+<code>MergeandSort.R</code> contains merging and sorting steps necessary to answer the questions<br />
+<code>Analyze.R</code> contains all the answers to the different questions asked</p>
 </div>
 <div id="libraries" class="section level3">
 <h3>Libraries</h3>
@@ -173,7 +177,10 @@ $(document).ready(function () {
 <div id="data-load" class="section level3">
 <h3>Data Load</h3>
 <p><strong>Download Files from the internet</strong></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">GDPsite &lt;-<span class="st"> &quot;https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FGDP.csv&quot;</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#Set Working Directory</span>
+<span class="kw">setwd</span>(<span class="st">&quot;/Users/NRC/DataScience-SMU/CaseStudy1&quot;</span>)
+<span class="co"># Importing Files from the web</span>
+GDPsite &lt;-<span class="st"> &quot;https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FGDP.csv&quot;</span>
 EDUCsite &lt;-<span class="st"> &quot;https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FEDSTATS_Country.csv&quot;</span>
 <span class="kw">download.file</span>(GDPsite,<span class="dt">destfile =</span> <span class="st">&quot;Data/GDP.csv&quot;</span>)
 <span class="kw">download.file</span>(EDUCsite,<span class="dt">destfile =</span> <span class="st">&quot;Data/EDUC.csv&quot;</span>)</code></pre></div>
