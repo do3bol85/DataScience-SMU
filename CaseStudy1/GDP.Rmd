@@ -88,6 +88,8 @@ X <- GDPandEDUCSorted[13,]
 knitr::kable(X,padding = 2,align = 'l')
 ```
 
+The 13 Country in the dataset is St. Kitts and Nevis
+
 #### 3- What are the average GDP rankings for the "High income: OECD" and "High income:nonOECD" groups?
 
 ```{r results = "show"}
@@ -95,7 +97,16 @@ Y <- ddply(GDPandEDUCSorted[GDPandEDUCSorted$Income.Group == "High income: nonOE
 knitr::kable(Y,padding = 2, align = 'l')
 ```
 
+* Average Ranking for High Income nonOECD Countries:  91.91
+* Average Ranking for High Income OECD Countries:     32.96
 
-### Analysis #4
+### Analysis #4 #5
+#### 4- Plot the GDP for all of the countries. Use ggplot2 to color your plot by Income Group
+##### Creating a scatter plot with all countries, grouped by Income Group
+```{r include=TRUE}
+P <- ggplot(GDPandEDUCSorted)+ geom_point(aes(x=CountryGDP,y=Income.Group,colour=Income.Group))+scale_x_log10()+labs(x = GDPandEDUCSorted$CountryGDP)
+P
+```
+
 image:
 ![Testing](Data/IncomeGroup.png)
