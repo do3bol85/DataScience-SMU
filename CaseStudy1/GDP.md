@@ -177,17 +177,71 @@ GDPandEDUCSorted$Ranking <- as.numeric(as.character(GDPandEDUCSorted$Ranking))
 GDPandEDUCSorted$Quants <- cut(GDPandEDUCSorted$Ranking,breaks = 5)
 # Creating a table 
 GDPQuants <- table(GDPandEDUCSorted$Income.Group,GDPandEDUCSorted$Quants)
-knitr::kable(GDPQuants,padding = 2, align  = 'l')
+knitr::kable(GDPQuants,padding = 5, align  = 'l',format = "html")
 ```
 
-                        (0.811,38.8]    (38.8,76.6]    (76.6,114]    (114,152]    (152,190]  
-----------------------  --------------  -------------  ------------  -----------  -----------
-                        0               0              0             0            0          
-High income: nonOECD    4               5              8             4            2          
-High income: OECD       18              10             1             1            0          
-Low income              0               1              9             16           11         
-Lower middle income     5               13             12            8            16         
-Upper middle income     11              9              8             8            9          
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:left;"> (0.811,38.8] </th>
+   <th style="text-align:left;"> (38.8,76.6] </th>
+   <th style="text-align:left;"> (76.6,114] </th>
+   <th style="text-align:left;"> (114,152] </th>
+   <th style="text-align:left;"> (152,190] </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> High income: nonOECD </td>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 5 </td>
+   <td style="text-align:left;"> 8 </td>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> High income: OECD </td>
+   <td style="text-align:left;"> 18 </td>
+   <td style="text-align:left;"> 10 </td>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:left;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Low income </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:left;"> 9 </td>
+   <td style="text-align:left;"> 16 </td>
+   <td style="text-align:left;"> 11 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Lower middle income </td>
+   <td style="text-align:left;"> 5 </td>
+   <td style="text-align:left;"> 13 </td>
+   <td style="text-align:left;"> 12 </td>
+   <td style="text-align:left;"> 8 </td>
+   <td style="text-align:left;"> 16 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Upper middle income </td>
+   <td style="text-align:left;"> 11 </td>
+   <td style="text-align:left;"> 9 </td>
+   <td style="text-align:left;"> 8 </td>
+   <td style="text-align:left;"> 8 </td>
+   <td style="text-align:left;"> 9 </td>
+  </tr>
+</tbody>
+</table>
 
 ```r
 # Create a table that shows the countries with Lower middle income but among the 38 nations with highest GDP
