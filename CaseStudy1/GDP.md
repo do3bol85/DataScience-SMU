@@ -161,15 +161,20 @@ Upper middle income     11              9              8             8          
 ```r
 # Create a table that shows the countries with Lower middle income but among the 38 nations with highest GDP
 Z <- GDPandEDUCSorted[which(GDPandEDUCSorted$Ranking <= 38 & GDPandEDUCSorted$Income.Group == "Lower middle income"),]
-knitr::kable(Z, padding = 2, align = 'l')
+print(xtable::xtable(Z),type="html")
 ```
 
-       CountryCode    Income.Group           Ranking    CounterName         CountryGDP    Quants        
------  -------------  ---------------------  ---------  ------------------  ------------  --------------
-51     EGY            Lower middle income    38         Egypt, Arab Rep.    262832        (0.811,38.8]  
-165    THA            Lower middle income    31         Thailand            365966        (0.811,38.8]  
-77     IDN            Lower middle income    16         Indonesia           878043        (0.811,38.8]  
-78     IND            Lower middle income    10         India               1841710       (0.811,38.8]  
-34     CHN            Lower middle income    2          China               8227103       (0.811,38.8]  
+```
+## <!-- html table generated in R 3.3.1 by xtable 1.8-2 package -->
+## <!-- Tue Oct 25 15:08:35 2016 -->
+## <table border=1>
+## <tr> <th>  </th> <th> CountryCode </th> <th> Income.Group </th> <th> Ranking </th> <th> CounterName </th> <th> CountryGDP </th> <th> Quants </th>  </tr>
+##   <tr> <td align="right"> 51 </td> <td> EGY </td> <td> Lower middle income </td> <td align="right"> 38.00 </td> <td> Egypt, Arab Rep. </td> <td align="right"> 262832.00 </td> <td> (0.811,38.8] </td> </tr>
+##   <tr> <td align="right"> 165 </td> <td> THA </td> <td> Lower middle income </td> <td align="right"> 31.00 </td> <td> Thailand </td> <td align="right"> 365966.00 </td> <td> (0.811,38.8] </td> </tr>
+##   <tr> <td align="right"> 77 </td> <td> IDN </td> <td> Lower middle income </td> <td align="right"> 16.00 </td> <td> Indonesia </td> <td align="right"> 878043.00 </td> <td> (0.811,38.8] </td> </tr>
+##   <tr> <td align="right"> 78 </td> <td> IND </td> <td> Lower middle income </td> <td align="right"> 10.00 </td> <td> India </td> <td align="right"> 1841710.00 </td> <td> (0.811,38.8] </td> </tr>
+##   <tr> <td align="right"> 34 </td> <td> CHN </td> <td> Lower middle income </td> <td align="right"> 2.00 </td> <td> China </td> <td align="right"> 8227103.00 </td> <td> (0.811,38.8] </td> </tr>
+##    </table>
+```
 
 We found 5 countries that matches our criteria above
