@@ -10,7 +10,7 @@ output:
     keep_md: yes
     theme: united
 ---
-```{r setup, include=TRUE}
+```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 ## Gross Domestic Product Analysis {.tabset .tabset-fade .tabset-pills}
@@ -96,7 +96,8 @@ There are 189 ID that match between both datasets
 ```{r results= "show"}
 # Extracting the 13 row from the data to check the 13 country ranking
 X <- GDPandEDUCSorted[13,]
-knitr::kable(X,padding = 2,align = 'l')
+X
+#knitr::kable(X,padding = 2,align = 'l')
 ```
 
 The 13 Country in the dataset is St. Kitts and Nevis
@@ -106,7 +107,8 @@ The 13 Country in the dataset is St. Kitts and Nevis
 ```{r include=TRUE}
 # Showing two income groups and there average ranking. Using kable from knitr to show the table in nice form
 Y <- ddply(GDPandEDUCSorted[GDPandEDUCSorted$Income.Group == "High income: nonOECD" | GDPandEDUCSorted$Income.Group == "High income: OECD",],.(Income.Group),summarize, "Average Ranking"=mean(Ranking))
-knitr::kable(Y,padding = 2, align = 'l')
+Y
+#knitr::kable(Y,padding = 2, align = 'l')
 ```
 
 * Average Ranking for High Income nonOECD Countries:  91.91
@@ -135,7 +137,8 @@ GDPQuants <- table(GDPandEDUCSorted$Income.Group,GDPandEDUCSorted$Quants)
 knitr::kable(GDPQuants,padding = 2, align  = 'l')
 # Create a table that shows the countries with Lower middle income but among the 38 nations with highest GDP
 Z <- GDPandEDUCSorted[which(GDPandEDUCSorted$Ranking <= 38 & GDPandEDUCSorted$Income.Group == "Lower middle income"),]
-knitr::kable(Z, padding = 2, align = 'l')
+Z
+#knitr::kable(Z, padding = 2, align = 'l')
 ```
 
 We found 5 countries that matches our criteria above
