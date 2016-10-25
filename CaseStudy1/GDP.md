@@ -159,10 +159,8 @@ knitr::kable(Y,padding = 2, align = 'l',format = "html")
 
 ```r
 # Plotting a scatter plot to showcase countries by Income Group and their GDP
-ggplot(GDPandEDUCSorted)+ geom_point(aes(x=CountryGDP,y=Income.Group,colour=Income.Group))+scale_x_log10()+labs(x = GDPandEDUCSorted$CountryGDP)
+W <- ggplot(GDPandEDUCSorted)+ geom_point(aes(x=CountryGDP,y=Income.Group,colour=Income.Group))+scale_x_log10()+labs(x = GDPandEDUCSorted$CountryGDP)
 ```
-
-![](GDP_files/figure-html/unnamed-chunk-9-1.png)<!-- -->
 
 GDP of Countries by Income Group:
 ![Testing](Data/IncomeGroup.png)
