@@ -117,7 +117,7 @@ knitr::kable(Y,padding = 2, align = 'l',format = "html")
 ##### Creating a scatter plot with all countries, grouped by Income Group
 ```{r results="hide"}
 # Plotting a scatter plot to showcase countries by Income Group and their GDP
-ggplot(GDPandEDUCSorted)+ geom_point(aes(x=CountryGDP,y=Income.Group,colour=Income.Group))+scale_x_log10()+labs(x = GDPandEDUCSorted$CountryGDP)
+W <- ggplot(GDPandEDUCSorted)+ geom_point(aes(x=CountryGDP,y=Income.Group,colour=Income.Group))+scale_x_log10()+labs(x = GDPandEDUCSorted$CountryGDP)
 ```
 
 GDP of Countries by Income Group:
